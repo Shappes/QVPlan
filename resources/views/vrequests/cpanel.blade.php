@@ -13,35 +13,47 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-control col-md-8 {{ $errors->has('vstart') ? ' has-error' : '' }}">
-                        <label for="vstart" class="col-md-4 control-label">Firstname, Name:</label>
-                        <label for="vstart" class="col-md-4 control-label"> {{ App\User::find($vr->user_id)->name }} </label>
+                        <label for="vstart" class="col-md-2 control-label">Firstname, Name:</label>
+                        <label for="vstart" class="col-md-2 control-label"> {{ App\User::find($vr->user_id)->name }} </label>
                     </div>
                 <br>
                     <div class="form-control col-md-8 {{ $errors->has('vstart') ? ' has-error' : '' }}">
-                        <label for="vstart" class="col-md-4 control-label">Vacation Start:</label>
-                        <label for="vstart" class="col-md-4 control-label">{{ $vr->vacation_start }}</label>
+                        <label for="vstart" class="col-md-2 control-label">Vacation Start:</label>
+                        <label for="vstart" class="col-md-2 control-label">{{ $vr->vacation_start }}</label>
                     </div>
                 <br>
 
                     <div class="form-control col-md-8 {{ $errors->has('vstart') ? ' has-error' : '' }}">
-                        <label for="vstart" class="col-md-4 control-label">Vacation End:</label>
-                        <label for="vstart" class="col-md-4 control-label">{{ $vr->vacation_end }}</label>
+                        <label for="vstart" class="col-md-2 control-label">Vacation End:</label>
+                        <label for="vstart" class="col-md-2 control-label">{{ $vr->vacation_end }}</label>
                     </div>
                 <br>
-                    <div class="form-control col-md-8 {{ $errors->has('vstart') ? ' has-error' : '' }}">
-                        <label for="vstart" class="col-md-4 control-label">Status:
+                    <p class="form-control col-md-8 {{ $errors->has('vstart') ? ' has-error' : '' }}">
+                        <label for="vstart" class="col-md-2 control-label">Status:
                         </label>
 
-                        <label for="vstart" class="col-md-4 control-label">{{ App\Status::find($vr->status_id)->name }}
+                        <label for="vstart" class="col-md-2 control-label">{{ App\Status::find($vr->status_id)->name }}
                         </label>
+                    </p>
 
-                            <label for="vstart" class="col-md-2  control-label">
-                                    <button type="button" class="btn btn-success btn-sm">Approve</button>
+                    <div>    
+                    <form class="form-horizontal col-md-offset-3 col-md-4" method="POST" action="{{ route('update2', $vr->id) }}">
+                    {{ csrf_field() }}
+                            <label for="status_id" class="col-md-4  control-label">
+                                    <button type="submit" class="btn btn-sm btn-success">Approve</button>
+                                {{ method_field('POST') }}
                             </label>
-                            <label for="vstart" class="col-md-2  control-label">
-                                    <button type="button" class="btn btn-danger btn-sm">Decline</button>
+                    </form>
+
+                    <form class="form-horizontal col-md-4" method="POST" action="{{ route('update3', $vr->id) }}">
+                    {{ csrf_field() }}
+                            <label for="status_id" class="col-md-4  control-label">
+                                    <button type="submit" class="btn btn-sm btn-danger">Decline</button>
+                                {{ method_field('POST') }}
                             </label>
+                    </form>
                     </div>
+
                 <br>
                     <div class="form-control col-md-8 {{ $errors->has('vstart') ? ' has-error' : '' }}">
                         <label for="vstart" class="col-md-8 control-label">Message:</label>

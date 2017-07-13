@@ -134,17 +134,30 @@ class VRequestController extends Controller
         $vRequest->save();
 
         return redirect()->route('myrequests');
-
-
-
-
-         
     }
 
-    public function update2(Request $request, VRequest $vRequest)
-    {
-        //
+    public function approve(Request $request, VRequest $vRequest, $id)
+    { //Approve
+        $vRequest= VRequest::find($id);
+
+        $vRequest->status_id = '1' ;
+
+        $vRequest->save();
+
+        return redirect()->route('cpanel');
     }
+
+    public function decline(Request $request, VRequest $vRequest, $id)
+    { //Decline
+        $vRequest= VRequest::find($id);
+
+        $vRequest->status_id = '2' ;
+
+        $vRequest->save();
+
+        return redirect()->route('cpanel');
+    }
+
 
     /**
      * Remove the specified resource from storage.

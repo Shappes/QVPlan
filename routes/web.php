@@ -24,4 +24,6 @@ Route::get('myrequests', 'VRequestController@show2')->name('myrequests');
 Route::get('myrequests/{id}', 'VRequestController@show3')->name('view');
 Route::get('myrequests/{id}/edit', 'VRequestController@edit')->name('edit');
 Route::post('myrequests/{id}/update', 'VRequestController@update')->name('update');
+Route::post('cpanel/app{id}', 'VRequestController@approve')->name('update2');
+Route::post('cpanel/dec{id}', 'VRequestController@decline')->name('update3');
 Route::post('vrequests', 'VRequestController@store');
